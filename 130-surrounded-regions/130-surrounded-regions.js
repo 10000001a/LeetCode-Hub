@@ -4,13 +4,12 @@
  */
 var solve = function(board) {
   const m = board.length;
-  const n = board[0].length;    
-    
-  const isVisited = new Array(m).fill(null).map(item => new Array(n).fill(false));
+  const n = board[0].length;
+  let isVisited = [];
   
-  // for (let i = 0; i < m; i++) {
-  //   isVisited.push(new Array(n).fill(false));
-  // }
+  for (let i = 0; i < m; i++) {
+    isVisited.push(new Array(n).fill(false));
+  }
 
   for (let i = 1; i < m - 1; i++) {
     for (let j = 1; j < n - 1; j++) {
