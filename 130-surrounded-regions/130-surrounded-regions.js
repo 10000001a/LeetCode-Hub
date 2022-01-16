@@ -31,37 +31,36 @@ var solve = function(board) {
           continue;
         }
         
-        if (board[currentVisiting[0]][currentVisiting[1] + 1] === 'O' && isVisited[currentVisiting[0]][currentVisiting[1] + 1] === false) {
+        if (isVisited[currentVisiting[0]][currentVisiting[1] + 1] === false && board[currentVisiting[0]][currentVisiting[1] + 1] === 'O') {
           willVisit.push([currentVisiting[0], currentVisiting[1] + 1]);
           isVisited[currentVisiting[0]][currentVisiting[1] + 1] = true;
         }
         
        
 
-        if (board[currentVisiting[0] + 1][currentVisiting[1]] === 'O' && isVisited[currentVisiting[0] + 1][currentVisiting[1]] === false) {
+        if (isVisited[currentVisiting[0] + 1][currentVisiting[1]] === false && board[currentVisiting[0] + 1][currentVisiting[1]] === 'O') {
           willVisit.push([currentVisiting[0] + 1, currentVisiting[1]]);
           isVisited[currentVisiting[0] + 1][currentVisiting[1]] = true;
         }
         
        
 
-        if (board[currentVisiting[0]][currentVisiting[1] - 1] === 'O' && isVisited[currentVisiting[0]][currentVisiting[1] - 1] === false) {
+        if (isVisited[currentVisiting[0]][currentVisiting[1] - 1] === false && board[currentVisiting[0]][currentVisiting[1] - 1] === 'O') {
           willVisit.push([currentVisiting[0], currentVisiting[1] - 1]);
           isVisited[currentVisiting[0]][currentVisiting[1] - 1] = true;
         }
         
        
 
-        if (board[currentVisiting[0] - 1][currentVisiting[1]] === 'O' && isVisited[currentVisiting[0] - 1][currentVisiting[1]] === false) {
+        if (isVisited[currentVisiting[0] - 1][currentVisiting[1]] === false && board[currentVisiting[0] - 1][currentVisiting[1]] === 'O') {
           willVisit.push([currentVisiting[0] - 1, currentVisiting[1]]);
           isVisited[currentVisiting[0] - 1][currentVisiting[1]] = true;
         }
       }
 
       if (shouldFlip) {
-        const len = containingRegion.length;
-        for (let x = 0; x < len; x++) {
-          board[containingRegion[x][0]][containingRegion[x][1]] = 'X';
+        for (const x of containingRegion) {
+          board[x[0]][x[1]] = 'X'
         }
       }
     }
