@@ -9,7 +9,6 @@ var solve = function(board) {
   const isVisited = [];
   
   for (let i = 0; i < m; i++) {
-    // isVisited.push(new Array(n).fill(true).fill(false, 1, n - 1));
     isVisited.push(new Array(n).fill(false));
   }
 
@@ -25,11 +24,9 @@ var solve = function(board) {
       while (willVisit.length !== 0) {
         currentVisiting = willVisit.shift();
         
-        
-        
         containingRegion.push([currentVisiting[0], currentVisiting[1]]);
 
-        if (isBorder(currentVisiting)) {
+        if (currentVisiting[0] === 0 || currentVisiting[0] === m - 1 || currentVisiting[1] === 0 || currentVisiting[1] === n - 1) {
           shouldFlip = false;
           continue;
         }
@@ -67,12 +64,6 @@ var solve = function(board) {
           board[containingRegion[x][0]][containingRegion[x][1]] = 'X';
         }
       }
-    }
-  
-    function isBorder(region) {
-      if (region[0] === 0 || region[0] === m - 1 || region[1] === 0 || region[1] === n - 1) return true;
-
-      return false;
     }
   }
 }
