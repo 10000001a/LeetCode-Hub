@@ -11,8 +11,12 @@ var maxArea = function(height) {
   while (start < end) {
     amount = Math.max(getAmount(start, end), amount);
     
-    if (height[start] > height[end]) end--;
-    else start++;
+    if (height[start] > height[end]) {
+      end--;
+      continue;
+    } else {
+      start++;
+    }
   }
   
   return amount;
