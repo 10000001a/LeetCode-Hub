@@ -13,21 +13,11 @@ var longestPalindrome = function(s) {
     } else {
       letterCount[x] = 1;
     }
-  }
-  
-
-  let isContainOdd = false;
-  
-  for (const x in letterCount) {
-    if (letterCount[x] % 2 === 1) {
-      isContainOdd = true;
-      result += letterCount[x] - 1;
-    } else {
-      result += letterCount[x];
+    
+    if (letterCount[x] % 2 === 0) {
+      result += 2;
     }
   }
   
-  if (isContainOdd) return result + 1
-  
-  return result;
+  return s.length > result ? result + 1 : result;
 };
