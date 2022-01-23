@@ -9,7 +9,7 @@ var longestPalindrome = function(s) {
   
   for (let i = 0; i < s.length; i++) {
     if (letterCount.hasOwnProperty(s[i])) {
-      ++letterCount[s[i]];
+      letterCount[s[i]]++;
     } else {
       letterCount[s[i]] = 1;
     }
@@ -21,9 +21,10 @@ var longestPalindrome = function(s) {
   for (const x in letterCount) {
     if (letterCount[x] % 2 === 1) {
       isContainOdd = true;
+      result += letterCount[x] - 1;
+    } else {
+      result += letterCount[x];
     }
-    
-    result += (letterCount[x] - (letterCount[x] % 2));
   }
   
   
