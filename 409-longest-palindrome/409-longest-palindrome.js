@@ -8,11 +8,7 @@ var longestPalindrome = function(s) {
   let result = 0;
   
   for (const x of s) {
-    if (letterCount.hasOwnProperty(x)) {
-      letterCount[x]++;
-    } else {
-      letterCount[x] = 1;
-    }
+    letterCount[x] = (letterCount[x] || 0) + 1
     
     if (letterCount[x] % 2 === 0) {
       result += 2;
