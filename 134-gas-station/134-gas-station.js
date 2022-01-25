@@ -4,9 +4,7 @@
  * @return {number}
  */
 var canCompleteCircuit = function(gas, cost) {
-  let sum = 0;
-  let result = 0;
-  let total = 0;
+  let sum = 0, result = 0, total = 0;
   
   for (let i = 0; i < gas.length; i++) {
     const margin = gas[i] - cost[i];
