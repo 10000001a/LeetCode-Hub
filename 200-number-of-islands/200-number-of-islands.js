@@ -7,8 +7,6 @@ var numIslands = function(grid) {
   const movement = [{dx: 0, dy: -1}, {dx: 0, dy: 1}, {dx: -1, dy: 0}, {dx: 1, dy: 0}];
   let result = 0;
   
-  
-  
   const find = () => {
     for (let i = 0; i < M; i++) {
       for (let j = 0; j < N; j++) {
@@ -39,7 +37,7 @@ var numIslands = function(grid) {
   while (1) {
     const next = find();
     
-    if  (next === false) return result;
+    if (next === false) return result;
     
     dfs(next.i, next.j);
 
