@@ -22,7 +22,8 @@ var cloneGraph = function(node) {
     
     visited[node.val] = root;
     
-    root.neighbors = node.neighbors.map(n => dfs(n));
+    // root.neighbors = node.neighbors.map(n => dfs(n));
+    node.neighbors.forEach(n => root.neighbors.push(dfs(n)))
     
     return root;
   }
