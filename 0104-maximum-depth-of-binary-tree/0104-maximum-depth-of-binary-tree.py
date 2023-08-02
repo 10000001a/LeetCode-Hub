@@ -12,14 +12,15 @@ class Solution:
     max_depth = 0
     while queue:
       node, depth = queue.popleft()
-      if node:
-        max_depth = max(max_depth, depth)
-        left, right = node.left, node.right
+      if node is None:
+        continue
+      max_depth = max(max_depth, depth)
+      left, right = node.left, node.right
 
-        if left is not None:
-          queue.append((left, depth + 1))
-        if right is not None:
-          queue.append((right, depth + 1))
-      
+      if left is not None:
+        queue.append((left, depth + 1))
+      if right is not None:
+        queue.append((right, depth + 1))
+
     return max_depth;
       
