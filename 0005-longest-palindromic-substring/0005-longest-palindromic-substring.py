@@ -12,14 +12,19 @@ class Solution:
         
         while y < length:
           if y - x == 1:
-            dp[x][y] = s[x] == s[y]
-            
+            if s[x] == s[y]:
+              dp[x][y] = True
+              
+              if longestEnd - longestStart < y - x:
+                longestStart = x
+                longestEnd = y
           else:
-            dp[x][y] = dp[x + 1][y - 1] and s[x] == s[y]
-          
-          if (dp[x][y] and longestEnd - longestStart < y - x):
-            longestStart = x
-            longestEnd = y
+            if dp[x + 1][y - 1] and s[x] == s[y]:
+              dp[x][y] = True
+              
+              if longestEnd - longestStart < y - x:
+                longestStart = x
+                longestEnd = y
           
           x += 1
           y += 1
