@@ -4,7 +4,7 @@ class Solution:
       longestEnd = 0
       
       length = len(s)
-      a = s
+
       
       dp = [[False for _ in range(length)] for _ in range(length)]
       
