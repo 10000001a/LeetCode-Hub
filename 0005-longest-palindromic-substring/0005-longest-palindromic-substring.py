@@ -4,17 +4,14 @@ class Solution:
       longestEnd = 0
       
       length = len(s)
-
       
-      dp = [[False for _ in range(length)] for _ in range(length)]
+      dp = [[i == j for i in range(length)] for j in range(length)]
       
-      for i in range(length):
+      for i in range(1, length):
         x, y = 0, i
         
-        while x < length and y < length:
-          if x == y:
-            dp[x][y] = True
-          elif y - x == 1:
+        while y < length:
+          if y - x == 1:
             dp[x][y] = s[x] == s[y]
             
           else:
