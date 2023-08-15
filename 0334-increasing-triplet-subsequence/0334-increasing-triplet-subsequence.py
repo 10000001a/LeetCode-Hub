@@ -13,7 +13,6 @@ class Solution:
             target = min(target, second_smallest)
           
           if i > target:
-            print(i)
             return True
         
         return False;
