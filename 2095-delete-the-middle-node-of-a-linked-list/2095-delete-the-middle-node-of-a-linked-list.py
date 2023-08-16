@@ -6,15 +6,27 @@
 class Solution:
   def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
 #       (linked list의 길이) // 2에 해당하는 index의 노드를 제거하는 linked list를 반환)
-      result = None
-      val_list = linkedListToList(head)
-      val_list.pop(getSize(head) // 2)
-      
-      for i in val_list[::-1]:
-        result = ListNode(i, result)
-      
-      return result
+#  size 구하기
+#  target 구하기
+#  head를 순회할 때, index를 확인하기
+#  index == target -1 
+#  해당 노드의 next를 다다음 노드로 꽂아주기
+
+    size = getSize(head)
+    target = size // 2
   
+    x = None
+    for i in range(target):
+      if x is None:
+        x = head
+      else:
+        x = x.next
+    if x is not None:
+      x.next = x.next.next
+      return head
+    else:
+      return None
+    
 def getSize(head: Optional[ListNode]):
     size = 0
     current = head
@@ -24,13 +36,3 @@ def getSize(head: Optional[ListNode]):
       current = current.next
 
     return size;
-  
-def linkedListToList(head: Optional[ListNode]):
-  l = []
-  current = head
-
-  while current:
-    l.append(current.val)
-    current = current.next
-  
-  return l
