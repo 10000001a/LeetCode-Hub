@@ -11,27 +11,17 @@ class Solution:
       end = n
 
       while True:
-        # target = n // 2 + n % 2
-        print(start, end)
         target = (start + end) // 2 + (start + end) % 2
         guess_result = guess(target)
-        print(guess_result)
         
         if guess_result == 0:
           return target
         
-        if guess_result < 0:
-          if target == end:
-            end = target - 1
-            continue
-          
-          end = target
+        if guess_result < 0:        
+          end = target if target != end else target - 1
         
         if guess_result > 0:
-          if target == start:
-            start = target + 1
-            continue
-          start = target
+          start = target if target != start else target + 1
           
         
         
