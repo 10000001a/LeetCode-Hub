@@ -3,24 +3,22 @@ class SmallestInfiniteSet:
         self.loss = []
 
     def popSmallest(self) -> int:
-        if len(self.loss) == 0:
+        length = len(self.loss)
+        if length == 0:
             self.loss.append(1)
             return 1
 
-        for index in range(len(self.loss)):
+        for index in range(length):
             if self.loss[index] != index + 1:
                 self.loss.insert(index, index + 1)
                 return index + 1
         
-        self.loss.append(len(self.loss) + 1)
-        return len(self.loss)
+        self.loss.append(length + 1)
+        return length + 1
 
     def addBack(self, num: int) -> None:
-        if len(self.loss) > 0:
-            self.loss = list(filter(lambda n: n != num, self.loss))
-
-
-        
+        if num in self.loss:
+            self.loss.remove(num)
 
 
 # Your SmallestInfiniteSet object will be instantiated and called as such:
