@@ -4,6 +4,7 @@ class SmallestInfiniteSet:
 
     def popSmallest(self) -> int:
         length = len(self.loss)
+
         if length == 0:
             self.loss.append(1)
             return 1
