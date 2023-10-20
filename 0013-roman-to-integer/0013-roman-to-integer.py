@@ -1,8 +1,5 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        result = 0
-        print(s.count('m'))
-
         thousand = 0
         hundred = 0
         ten = 0
