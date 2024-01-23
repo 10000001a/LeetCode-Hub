@@ -9,23 +9,18 @@ class Cell:
       self.is_rotted = True
 
 class Solution:
-  
-  
-    def orangesRotting(self, grid: List[List[int]]) -> int:
+    def getAdjacentOrange(self, grid: List[List[Cell]], position: Tuple[int, int]) -> List[Tuple[int, int]]:
+        adjacent_position = [
+          (position[0] - 1, position[1]),
+          (position[0] + 1, position[1]),
+          (position[0], position[1] - 1),
+          (position[0], position[1] + 1)
+        ]
+
+        return list(filter(lambda t: t[0] >= 0 and t[0] < len(grid) and t[1] >= 0 and t[1] < len(grid[0]) and grid[t[0]][t[1]].is_orange and not grid[t[0]][t[1]].is_rotted, adjacent_position))
       
-        def getAdjacentOrange(grid: List[List[Cell]], position: Tuple[int, int]) -> List[Tuple[int, int]]:
-          adjacent_position = [
-            (position[0] - 1, position[1]),
-            (position[0] + 1, position[1]),
-            (position[0], position[1] - 1),
-            (position[0], position[1] + 1)
-          ]
-          
-          # def filterCb(t: Tuple[int, int]):
-          #   return t[0] >= 0 and t[0] < len(grid) and t[1] >= 0 and t[1] < len(grid[0]) and grid[t[0]][t[1]].is_orange and not grid[t[0]][t[1]].is_rotted
-          
-          return list(filter(lambda t: t[0] >= 0 and t[0] < len(grid) and t[1] >= 0 and t[1] < len(grid[0]) and grid[t[0]][t[1]].is_orange and not grid[t[0]][t[1]].is_rotted, adjacent_position))
       
+    def orangesRotting(self, grid: List[List[int]]) -> int:      
         count_orange = 0
         count_rotted = 0
         rotted_cell_list: List[Tuple[int, int]] = []
@@ -43,7 +38,7 @@ class Solution:
         will_rot = set([])
         
         for rotted_cell in rotted_cell_list:
-          will_rot.update(getAdjacentOrange(new_grid, rotted_cell)) 
+          will_rot.update(self.getAdjacentOrange(new_grid, rotted_cell)) 
         
         _round = 0
         
@@ -54,7 +49,7 @@ class Solution:
           for should_rot in should_rot_list:
             count_rotted += 1
             new_grid[should_rot[0]][should_rot[1]].rot()
-            new_will_rot.update(getAdjacentOrange(new_grid, should_rot)) 
+            new_will_rot.update(self.getAdjacentOrange(new_grid, should_rot)) 
           
           will_rot = set(new_will_rot - will_rot)
           _round += 1
