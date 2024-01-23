@@ -45,15 +45,10 @@ class Solution:
         for rotted_cell in rotted_cell_list:
           will_rot.update(getAdjacentOrange(new_grid, rotted_cell)) 
         
-        print('will_rot', will_rot)
-        print('count_orange', count_orange)
-        
         _round = 0
         
         while will_rot:
-          print('count_rotted', count_rotted)
           should_rot_list = list(will_rot)
-          # will_rot.clear()
           new_will_rot = set([])
           
           for should_rot in should_rot_list:
@@ -62,7 +57,6 @@ class Solution:
             new_will_rot.update(getAdjacentOrange(new_grid, should_rot)) 
           
           will_rot = set(new_will_rot - will_rot)
-          print('will_rot', will_rot)
           _round += 1
         
         return _round if count_rotted == count_orange else -1
