@@ -21,10 +21,10 @@ class Solution:
             (position[0], position[1] + 1)
           ]
           
-          def filterCb(t: Tuple[int, int]):
-            return t[0] >= 0 and t[0] < len(grid) and t[1] >= 0 and t[1] < len(grid[0]) and grid[t[0]][t[1]].is_orange and not grid[t[0]][t[1]].is_rotted
+          # def filterCb(t: Tuple[int, int]):
+          #   return t[0] >= 0 and t[0] < len(grid) and t[1] >= 0 and t[1] < len(grid[0]) and grid[t[0]][t[1]].is_orange and not grid[t[0]][t[1]].is_rotted
           
-          return list(filter(filterCb, adjacent_position))
+          return list(filter(lambda t: t[0] >= 0 and t[0] < len(grid) and t[1] >= 0 and t[1] < len(grid[0]) and grid[t[0]][t[1]].is_orange and not grid[t[0]][t[1]].is_rotted, adjacent_position))
       
         count_orange = 0
         count_rotted = 0
